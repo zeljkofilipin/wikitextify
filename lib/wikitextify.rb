@@ -5,6 +5,12 @@ def gerrit(url)
   "[[gerrit:#{patch}]]"
 end
 
+def link?(line)
+  return false if line.scan(%r{https://}) == []
+
+  true
+end
+
 def phabricator(url)
   task = url.split('/').last
   "[[phabricator:#{task}]]"
