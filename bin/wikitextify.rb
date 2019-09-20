@@ -11,5 +11,10 @@ File.foreach('input.txt') do |line|
       %r{https://gerrit\.wikimedia\.org/r/(\d{6})},
       '[[gerrit:\1]]'
     )
-  puts gerrit_line
+  mediawiki_line =
+    gerrit_line.gsub(
+      %r{https://www\.mediawiki\.org/wiki/(\S+)},
+      '[[\1]]'
+    )
+  puts mediawiki_line
 end
