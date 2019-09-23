@@ -3,9 +3,11 @@
 require 'wikitextify'
 
 RSpec.describe 'wikitextify' do
-  it 'changes long Gerrit links to short' do
-    long = 'https://gerrit.wikimedia.org/r/c/mediawiki/extensions/Wikibase/+/507910'
-    short = '[[gerrit:507910]]'
+  it 'shortens Gerrit links' do
+    long =
+      "** Performance: CR of RDBMS change https://gerrit.wikimedia.org/r/#/c/mediawiki/core/+/394430/\n"
+    short =
+      "** Performance: CR of RDBMS change [[gerrit:394430]]/\n"
     expect(gerrit(long)).to eq short
   end
   it 'changes long Phabricator links to short' do

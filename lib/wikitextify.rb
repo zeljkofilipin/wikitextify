@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
-def gerrit(url)
-  patch = url.split('/').last
-  "[[gerrit:#{patch}]]"
+def gerrit(line)
+  line.gsub(
+    %r{https://gerrit\.wikimedia\.org/r/(#\S*)(\d{6})},
+    '[[gerrit:\2]]'
+  )
 end
 
 def link?(line)
