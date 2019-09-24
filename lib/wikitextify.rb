@@ -20,3 +20,10 @@ def phabricator(line)
     '[[phab:\2\3]]'
   )
 end
+
+def wikitech(line)
+  line.gsub(
+    %r{https://wikitech\.wikimedia\.org/wiki/(\S+)},
+    '[[wikitech:\1]]'
+  )
+end

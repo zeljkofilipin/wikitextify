@@ -38,4 +38,13 @@ RSpec.describe 'MediaWiki ' do
       "https://phabricator.wikimedia.org/T231506\n"
     expect(mediawiki(long)).to eq short
   end
+  it 'shortens Wikitech links' do
+    long = '*** Production incident caused instability in eqiad cluster '\
+      'https://wikitech.wikimedia.org/wiki/Incident_documentation/20190913-maps'\
+      "\n"
+    short = '*** Production incident caused instability in eqiad cluster '\
+      '[[wikitech:Incident_documentation/20190913-maps]]'\
+      "\n"
+    expect(wikitech(long)).to eq short
+  end
 end
