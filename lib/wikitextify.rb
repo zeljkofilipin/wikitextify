@@ -2,7 +2,7 @@
 
 def gerrit(line)
   line.gsub(
-    %r{https://gerrit\.wikimedia\.org/r/(#\S*)(\d{6})},
+    %r{https://gerrit\.wikimedia\.org/r/(#\S*)?(\d{6})},
     '[[gerrit:\2]]'
   )
 end

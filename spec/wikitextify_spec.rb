@@ -3,12 +3,21 @@
 require 'wikitextify'
 
 RSpec.describe 'wikitextify' do
-  it 'shortens Gerrit links' do
+  it 'shortens long Gerrit links' do
     long =
       '** Performance: CR of RDBMS change '\
       "https://gerrit.wikimedia.org/r/#/c/mediawiki/core/+/394430/\n"
     short =
       "** Performance: CR of RDBMS change [[gerrit:394430]]/\n"
+    expect(gerrit(long)).to eq short
+  end
+  it 'shortens short Gerrit links' do
+    long =
+      '** SRE: Need CR and deploy for Apache SVG compression fix. – '\
+      "https://gerrit.wikimedia.org/r/535860\n"
+    short =
+      '** SRE: Need CR and deploy for Apache SVG compression fix. – '\
+      "[[gerrit:535860]]\n"
     expect(gerrit(long)).to eq short
   end
   it 'shortens Phabricator links' do
