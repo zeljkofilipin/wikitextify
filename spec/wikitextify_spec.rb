@@ -5,7 +5,8 @@ require 'wikitextify'
 RSpec.describe 'wikitextify' do
   it 'shortens Gerrit links' do
     long =
-      "** Performance: CR of RDBMS change https://gerrit.wikimedia.org/r/#/c/mediawiki/core/+/394430/\n"
+      '** Performance: CR of RDBMS change '\
+      "https://gerrit.wikimedia.org/r/#/c/mediawiki/core/+/394430/\n"
     short =
       "** Performance: CR of RDBMS change [[gerrit:394430]]/\n"
     expect(gerrit(long)).to eq short
