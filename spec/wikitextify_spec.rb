@@ -27,6 +27,11 @@ RSpec.describe 'Phabricator ' do
     short = "** Analytics: [[phab:T229882]]\n"
     expect(phabricator(long)).to eq short
   end
+  it 'shortens links with anchors' do
+    long = "** Analytics: https://phabricator.wikimedia.org/T232691#5488675\n"
+    short = "** Analytics: [[phab:T232691#5488675]]\n"
+    expect(phabricator(long)).to eq short
+  end
   it 'creates links' do
     long = "** Implement firstChange logging (task T229079)\n"
     short = "** Implement firstChange logging (task [[phab:T229079]])\n"
