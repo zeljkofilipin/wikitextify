@@ -20,6 +20,16 @@ RSpec.describe 'Gerrit ' do
       "[[gerrit:535860]]\n"
     expect(gerrit(long)).to eq short
   end
+  it 'shortens multiple links' do
+    long =
+      '** Performance: CR of RDBMS change '\
+      'https://gerrit.wikimedia.org/r/#/c/mediawiki/core/+/394430/ '\
+      "https://gerrit.wikimedia.org/r/535860\n"
+    short =
+      '** Performance: CR of RDBMS change [[gerrit:394430]]/ '\
+      "[[gerrit:535860]]\n"
+    expect(gerrit(long)).to eq short
+  end
 end
 RSpec.describe 'Phabricator ' do
   it 'shortens links' do
