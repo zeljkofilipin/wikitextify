@@ -7,6 +7,13 @@ def gerrit(line)
   )
 end
 
+def mediawiki(line)
+  line.gsub(
+    %r{https://www\.mediawiki\.org/wiki/(\S+)},
+    '[[\1]]'
+  )
+end
+
 def phabricator(line)
   line.gsub(
     %r{(https://phabricator\.wikimedia\.org/)*(T\d{6})(#\d{7})*},

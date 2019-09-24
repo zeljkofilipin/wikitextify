@@ -16,4 +16,13 @@ RSpec.describe 'wikitextify' do
     short = "** Analytics: [[phab:T229882]]\n"
     expect(phabricator(long)).to eq short
   end
+  it 'shortens MediaWiki links' do
+    long = '** Discussing expanding the topic models with the Growth Team: '\
+      'https://www.mediawiki.org/wiki/Topic:Ub3g57qa9gflrlrc & '\
+      "https://phabricator.wikimedia.org/T231506\n"
+    short = '** Discussing expanding the topic models with the Growth Team: '\
+      '[[Topic:Ub3g57qa9gflrlrc]] & '\
+      "https://phabricator.wikimedia.org/T231506\n"
+    expect(mediawiki(long)).to eq short
+  end
 end
