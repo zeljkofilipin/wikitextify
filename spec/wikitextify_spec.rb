@@ -27,6 +27,12 @@ RSpec.describe 'Phabricator ' do
     short = "** Analytics: [[phab:T229882]]\n"
     expect(phabricator(long)).to eq short
   end
+  it 'shortens multiple links' do
+    long = '** Analytics: https://phabricator.wikimedia.org/T229882 '\
+      "https://phabricator.wikimedia.org/T232691\n"
+    short = "** Analytics: [[phab:T229882]] [[phab:T232691]]\n"
+    expect(phabricator(long)).to eq short
+  end
   it 'shortens links with anchors' do
     long = "** Analytics: https://phabricator.wikimedia.org/T232691#5488675\n"
     short = "** Analytics: [[phab:T232691#5488675]]\n"
