@@ -11,9 +11,9 @@ RSpec.describe 'wikitextify' do
       "** Performance: CR of RDBMS change [[gerrit:394430]]/\n"
     expect(gerrit(long)).to eq short
   end
-  it 'changes long Phabricator links to short' do
-    long = 'https://phabricator.wikimedia.org/T224324'
-    short = '[[phabricator:T224324]]'
+  it 'shortens Phabricator links' do
+    long = "** Analytics: https://phabricator.wikimedia.org/T229882\n"
+    short = "** Analytics: [[phab:T229882]]\n"
     expect(phabricator(long)).to eq short
   end
   it 'knows if line contains a link' do

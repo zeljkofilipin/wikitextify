@@ -13,7 +13,9 @@ def link?(line)
   true
 end
 
-def phabricator(url)
-  task = url.split('/').last
-  "[[phabricator:#{task}]]"
+def phabricator(line)
+  line.gsub(
+    %r{(https://phabricator\.wikimedia\.org/)*(T\d{6})(#\d{7})*},
+    '[[phab:\2\3]]'
+  )
 end

@@ -3,11 +3,7 @@
 require('./lib/wikitextify.rb')
 
 File.foreach('input.txt') do |line|
-  phabricator_line =
-    line.gsub(
-      %r{(https://phabricator\.wikimedia\.org/)*(T\d{6})(#\d{7})*},
-      '[[phab:\2\3]]'
-    )
+  phabricator_line = phabricator(line)
   gerrit_line = gerrit(phabricator_line)
   mediawiki_line =
     gerrit_line.gsub(
