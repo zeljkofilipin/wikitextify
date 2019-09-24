@@ -7,12 +7,6 @@ def gerrit(line)
   )
 end
 
-def link?(line)
-  return false if line.scan(%r{https://}) == []
-
-  true
-end
-
 def phabricator(line)
   line.gsub(
     %r{(https://phabricator\.wikimedia\.org/)*(T\d{6})(#\d{7})*},
