@@ -7,6 +7,13 @@ def gerrit(line)
   )
 end
 
+def git(line)
+  line.gsub(
+    /git #(\w{7,8})/,
+    '[[gerrit:q/\1]]'
+  )
+end
+
 def mediawiki(line)
   line.gsub(
     %r{https://www\.mediawiki\.org/wiki/(\S+)},

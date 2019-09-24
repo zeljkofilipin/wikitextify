@@ -31,6 +31,17 @@ RSpec.describe 'Gerrit ' do
     expect(gerrit(long)).to eq short
   end
 end
+RSpec.describe 'Git' do
+  it 'creates links' do
+    long =
+      'Updated linters in Citoid (git #ac54ad79), '\
+      "CodeMirror (git #81ce8b3)\n"
+    short =
+      'Updated linters in Citoid ([[gerrit:q/ac54ad79]]), '\
+      "CodeMirror ([[gerrit:q/81ce8b3]])\n"
+    expect(git(long)).to eq short
+  end
+end
 RSpec.describe 'Phabricator ' do
   it 'shortens links' do
     long = "** Analytics: https://phabricator.wikimedia.org/T229882\n"
