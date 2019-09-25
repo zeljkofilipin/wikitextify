@@ -23,8 +23,8 @@ end
 
 def phabricator(line)
   line.gsub(
-    %r{(https://phabricator\.wikimedia\.org/)?(T\d{6})+(#\d{7})?},
-    '[[phab:\2\3]]'
+    %r{(https://phabricator\.wikimedia\.org/)?(T\d{6})+(#\d{7})?|(https:\/\/phabricator\.wikimedia\.org\/)+(\S+)\/},
+    '[[phab:\2\3\5]]'
   )
 end
 

@@ -43,9 +43,16 @@ RSpec.describe 'Git' do
   end
 end
 RSpec.describe 'Phabricator ' do
-  it 'shortens links' do
+  it 'shortens task links' do
     long = "** Analytics: https://phabricator.wikimedia.org/T229882\n"
     short = "** Analytics: [[phab:T229882]]\n"
+    expect(phabricator(long)).to eq short
+  end
+  it 'shortens tag links' do
+    long = '*** History & diffs - beginning development against prototype '\
+      "endpoints https://phabricator.wikimedia.org/tag/ios-app-v6.5/\n"
+    short = '*** History & diffs - beginning development against prototype '\
+      "endpoints [[phab:tag/ios-app-v6.5]]\n"
     expect(phabricator(long)).to eq short
   end
   it 'shortens multiple links' do
