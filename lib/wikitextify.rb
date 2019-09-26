@@ -21,7 +21,7 @@ def mediawiki(line)
   line.gsub(
     %r{
       https://www\.mediawiki\.org/wiki/ # https://www.mediawiki.org/
-      (\S+)                             # one or more non-whitespace characters
+      (\S+)                             # 1+ non-whitespace characters
     }x,
     '[[\1]]'
   )
@@ -36,7 +36,10 @@ end
 
 def wikitech(line)
   line.gsub(
-    %r{https://wikitech\.wikimedia\.org/wiki/(\S+)},
+    %r{
+      https://wikitech\.wikimedia\.org/wiki/ # https://wikitech.wikimedia.org/
+      (\S+)                                  # 1+ non-whitespace characters
+    }x,
     '[[wikitech:\1]]'
   )
 end
