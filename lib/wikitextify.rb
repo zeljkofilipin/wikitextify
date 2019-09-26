@@ -23,7 +23,7 @@ end
 
 def phabricator(line)
   line.gsub(
-    %r{(https://phabricator\.wikimedia\.org/)?(T\d{6})+(#\d{7})?|(https:\/\/phabricator\.wikimedia\.org\/)+(\S+)\/},
+    %r{(https://phabricator\.wikimedia\.org/)?(T\d{6})+(#\d{7})?|(https:\/\/phabricator\.wikimedia\.org\/)+(\S+)\/}, # rubocop:disable Metrics/LineLength
     '[[phab:\2\3\5]]'
   )
 end
