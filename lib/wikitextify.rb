@@ -9,7 +9,10 @@ end
 
 def git(line)
   line.gsub(
-    /git #(\w{7,8})/,
+    /git         # git
+    [ ]          # space
+    \#           # hash
+    (\w{7,8})/x, # 7 or 8 word characters
     '[[gerrit:q/\1]]'
   )
 end
