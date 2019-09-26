@@ -32,12 +32,24 @@ def mediawiki(line)
   )
 end
 
+# rubocop:disable Metrics/MethodLength
 def phabricator(line)
   line.gsub(
-    %r{(https://phabricator\.wikimedia\.org/)?(T\d{6})+(#\d{7})?|(https:\/\/phabricator\.wikimedia\.org\/)+(\S+)\/}, # rubocop:disable Metrics/LineLength
+    %r{
+      # https://phabricator.wikimedia.org/, optional
+      (https://phabricator\.wikimedia\.org/)?
+      (T\d{6})+  # T followed by 6 digits
+      (\#\d{7})? # hash followed by 7 digits, optional
+      |          # or
+      # https://phabricator.wikimedia.org/
+      (https:\/\/phabricator\.wikimedia\.org\/)+
+      (\S+)      # 1+ non-whitespace characters
+      \/         # trailing slash
+    }x,
     '[[phab:\2\3\5]]'
   )
 end
+# rubocop:enable Metrics/MethodLength
 
 def wikitech(line)
   line.gsub(
