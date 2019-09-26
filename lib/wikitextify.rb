@@ -2,7 +2,12 @@
 
 def gerrit(line)
   line.gsub(
-    %r{https://gerrit\.wikimedia\.org/r/(#\S*)?(\d{6})(/?)},
+    %r{
+      https://gerrit\.wikimedia\.org/r/ # https://gerrit.wikimedia.org/
+      (\#\S*)?                          # optional path to repo
+      (\d{6})                           # 6 digit patch number
+      /?                                # optional trailing slash
+    }x,
     '[[gerrit:\2]]'
   )
 end
