@@ -19,7 +19,10 @@ end
 
 def mediawiki(line)
   line.gsub(
-    %r{https://www\.mediawiki\.org/wiki/(\S+)},
+    %r{
+      https://www\.mediawiki\.org/wiki/ # https://www.mediawiki.org/
+      (\S+)                             # one or more non-whitespace characters
+    }x,
     '[[\1]]'
   )
 end
