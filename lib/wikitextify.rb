@@ -38,7 +38,7 @@ def phabricator(line)
     %r{
       # https://phabricator.wikimedia.org/, optional
       (https://phabricator\.wikimedia\.org/)?
-      (T\d{6})+  # T followed by 6 digits
+      (T\d{4,6})+  # T followed by 4-6 digits
       (\#\d{7})? # hash followed by 7 digits, optional
       |          # or
       # https://phabricator.wikimedia.org/
