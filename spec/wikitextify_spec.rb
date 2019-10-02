@@ -11,6 +11,15 @@ RSpec.describe 'Gerrit ' do
       "** Performance: CR of RDBMS change [[gerrit:394430]]\n"
     expect(gerrit(long)).to eq short
   end
+  it 'shortens long links without #' do
+    long =
+      '** Wikidata: We believe we are actually not blocking you on '\
+      "https://gerrit.wikimedia.org/r/c/mediawiki/core/+/497537/\n"
+    short =
+      '** Wikidata: We believe we are actually not blocking you on '\
+      "[[gerrit:497537]]\n"
+    expect(gerrit(long)).to eq short
+  end
   it 'shortens short links' do
     long =
       '** SRE: Need CR and deploy for Apache SVG compression fix. – '\
