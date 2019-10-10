@@ -38,13 +38,14 @@ def phabricator(line)
     %r{
       # https://phabricator.wikimedia.org/, optional
       (https://phabricator\.wikimedia\.org/)?
-      (T\d{4,6})+  # T followed by 4-6 digits
-      (\#\d{7})? # hash followed by 7 digits, optional
-      |          # or
+      (?<!\[\[phab:) # do not match `[[phab:`
+      (T\d{4,6})+    # T followed by 4-6 digits
+      (\#\d{7})?     # hash followed by 7 digits, optional
+      |              # or
       # https://phabricator.wikimedia.org/
       (https:\/\/phabricator\.wikimedia\.org\/)+
-      (\S+)      # 1+ non-whitespace characters
-      \/         # trailing slash
+      (\S+)          # 1+ non-whitespace characters
+      \/             # trailing slash
     }x,
     '[[phab:\2\3\5]]'
   )
