@@ -70,9 +70,16 @@ RSpec.describe 'Phabricator ' do
     short = "** Analytics: [[phab:T229882]]\n"
     expect(phabricator(long)).to eq short
   end
-  it 'shortens tag links' do
+  it 'shortens tag links with trailing slash' do
     long = '*** History & diffs - beginning development against prototype '\
       "endpoints https://phabricator.wikimedia.org/tag/ios-app-v6.5/\n"
+    short = '*** History & diffs - beginning development against prototype '\
+      "endpoints [[phab:tag/ios-app-v6.5/]]\n"
+    expect(phabricator(long)).to eq short
+  end
+  it 'shortens tag links without trailing slash' do
+    long = '*** History & diffs - beginning development against prototype '\
+      "endpoints https://phabricator.wikimedia.org/tag/ios-app-v6.5\n"
     short = '*** History & diffs - beginning development against prototype '\
       "endpoints [[phab:tag/ios-app-v6.5]]\n"
     expect(phabricator(long)).to eq short

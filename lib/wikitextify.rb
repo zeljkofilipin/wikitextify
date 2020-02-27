@@ -55,7 +55,7 @@ def phabricator(line)
       # https://phabricator.wikimedia.org/
       (https:\/\/phabricator\.wikimedia\.org\/)+
       (\S+)          # 1+ non-whitespace characters
-      \/             # trailing slash
+      \/?            # trailing slash, optional
     }x,
     '[[phab:\2\3\5]]'
   )
