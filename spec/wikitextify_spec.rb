@@ -44,10 +44,12 @@ RSpec.describe 'Gitiles' do
   it 'shortens links' do
     long =
       '** Scap 3.13.0 release '\
-      "https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/tools/scap/+/release/debian/changelog#1\n"
+      'https://gerrit.wikimedia.org/r/plugins/gitiles/'\
+      "mediawiki/tools/scap/+/release/debian/changelog#1\n"
     short =
       '** Scap 3.13.0 release '\
-      "[[gerrit:plugins/gitiles/mediawiki/tools/scap/+/release/debian/changelog#1]]\n"
+      '[[gerrit:plugins/gitiles/'\
+      "mediawiki/tools/scap/+/release/debian/changelog#1]]\n"
     expect(gitiles(long)).to eq short
   end
 end
