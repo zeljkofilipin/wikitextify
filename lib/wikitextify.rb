@@ -22,6 +22,16 @@ def git(line)
   )
 end
 
+def gitiles(line)
+  line.gsub(
+    %r{
+      https://gerrit\.wikimedia\.org/r/plugins/gitiles/ # https://gerrit.wikimedia.org/r/plugins/gitiles/
+      (\S+)                                             # path
+    }x,
+    '[[gerrit:plugins/gitiles/\1]]'
+  )
+end
+
 def mediawiki(line)
   line.gsub(
     %r{
